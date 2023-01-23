@@ -22,4 +22,14 @@ class Hotel extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function services()
+    {
+        return $this->belongsToMany(Service::class, 'hotel_services');
+    }
 }

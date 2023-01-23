@@ -187,6 +187,7 @@ return [
         'stars' => 'Hotel stars',
         'password' => 'Password',
         'password_confirmation' => 'Confirm Password',
+        'services' => 'Services',
     ],
 
 ];

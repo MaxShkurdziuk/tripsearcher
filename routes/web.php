@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Facades\Voyager;
@@ -37,6 +38,19 @@ Route::group(['prefix' => '/hotels', 'as' => 'hotels.', 'middleware' => 'auth'],
     });
     Route::get('/{hotel}', [HotelController::class, 'show'])->name('show');
     Route::post('/{hotel}/delete', [HotelController::class, 'delete'])->name('delete');
+});
+
+Route::group(['prefix' => '/services', 'as' => 'services.', 'middleware' => 'auth'], function () {
+    Route::get('/add', [ServiceController::class, 'addService'])->name('add.service');
+    Route::post('/add', [ServiceController::class, 'add'])->name('add');
+    Route::get('', [ServiceController::class, 'list'])->name('list');
+
+    Route::group(['prefix' => '/{service}/edit'], function () {
+        Route::get('', [ServiceController::class, 'editService'])->name('edit.service');
+        Route::post('', [ServiceController::class, 'edit'])->name('edit');
+    });
+    Route::get('/{service}', [ServiceController::class, 'show'])->name('show');
+    Route::post('/{service}/delete', [ServiceController::class, 'delete'])->name('delete');
 });
 
 Route::get('/sign-up', [UserController::class, 'signUpForm'])->name('sign-up.form');

@@ -52,6 +52,20 @@
                     @enderror
                 </div>
 
+                <div class="form-group">
+                    <label for="">{{ __('validation.attributes.services') }}</label>
+                    @error('services')
+                    <div>{{ $message }}</div>
+                    @enderror
+                    @foreach($services as $service)
+                        <div class="form-check">
+                            <input type="checkbox" name="services[]" value="{{ $service->id }}" class="form-check-input"
+                                   @if($hotel->services->contains('id', $service->id)) checked @endif
+                            > {{ $service->name }}
+                        </div>
+                    @endforeach
+                </div>
+
                 <div class="mb-3">
                     <label for="description">{{__('validation.attributes.description') }}</label>
                     <textarea name="description" rows="3"

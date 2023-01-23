@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Hotel;
+namespace App\Http\Requests\Service;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
 class CreateRequest extends FormRequest
 {
@@ -26,13 +25,6 @@ class CreateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'min:1', 'max:255'],
-            'stars' => ['required', 'min:1', 'max:1'],
-            'country' => ['required', 'min:1', 'max:255'],
-            'city' => ['required', 'min:1', 'max:255'],
-            'open_year' => ['required', 'min:4', 'max:4'],
-            'description' => ['required', 'min:100'],
-            'services' => ['required', 'array', 'min:1'],
-            'services.*' => ['required', 'exists:services,id'],
         ];
     }
 }

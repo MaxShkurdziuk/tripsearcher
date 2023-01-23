@@ -15,11 +15,13 @@
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                @if (!auth()->check())
+                @if (auth()->check())
                     <li class="nav-item"><a href="{{ route('hotels.list') }}" class="nav-link px-2 text-white">Hotels</a>
                     </li>
                     <li class="nav-item"><a href="{{ route('hotels.add.hotel') }}" class="nav-link px-2 text-white">Add
                             Hotel</a></li>
+                    <li class="nav-item"><a href="{{ route('services.list') }}" class="nav-link px-2 text-white">Hotel Services</a></li>
+                    <li class="nav-item"><a href="{{ route('services.add.service') }}" class="nav-link px-2 text-white">Add Hotel Service</a></li>
                 @endif
                 <li class="nav-item"><a href="{{ route('contact') }}" class="nav-link px-2 text-white">Contact</a></li>
                 <li class="nav-item"><a href="{{ route('about') }}" class="nav-link px-2 text-white">About</a></li>
